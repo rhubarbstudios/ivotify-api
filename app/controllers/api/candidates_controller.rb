@@ -1,7 +1,7 @@
 class Api::CandidatesController < ApplicationController
 
   def index
-    render json: Candidate.all, include: :full_name
+    render json: Candidate.all, methods: :full_name
   end
 
   def show
@@ -38,6 +38,3 @@ class Api::CandidatesController < ApplicationController
     end
 end
 
-
-
-end
