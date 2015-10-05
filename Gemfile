@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.1'
 gem 'pg'
 gem 'jbuilder', '~> 2.0'
-gem 'rack-cors',            require: 'rack/cors'
+gem 'rack-cors', require: 'rack/cors'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'pry-rails'
@@ -21,6 +21,9 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'capybara'
 end
 
+group :test do
+  gem 'faker'
+  gem 'database_cleaner'
+end
