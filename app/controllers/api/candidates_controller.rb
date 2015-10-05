@@ -1,7 +1,7 @@
 class Api::CandidatesController < ApplicationController
 
   def index
-    render json: Candidate.all, methods: :full_name
+    render json: {candidates: Candidate.all}, methods: :full_name
   end
 
   def show
