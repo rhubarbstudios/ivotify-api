@@ -1,8 +1,8 @@
 class Api::IssuesController < ApplicationController
-  respond_to :json
 
   def index
-    render json: Issue.all
+    issues = Issue.all
+    render json: {issues: issues }
   end
 
   def new
