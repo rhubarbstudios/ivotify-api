@@ -24,7 +24,7 @@ RSpec.describe Candidate, type: :model do
       expect(candidate).to be_invalid
     end
 
-    it "returns a contact's full name as a string" do
+    it "returns a contact's full_name as a string" do
       candidate = build(:candidate, first_name: "George", last_name: "Washington")
       expect(candidate.full_name).to eq "George Washington"
     end
