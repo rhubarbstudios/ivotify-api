@@ -5,7 +5,7 @@ class Api::CandidatesController < ApplicationController
   end
 
   def show
-    render json: Candidate.find(params[:id])
+    render json: Candidate.find(params[:id]), methods: :full_name
   end
 
   def create
@@ -20,7 +20,7 @@ class Api::CandidatesController < ApplicationController
   def update
     candidate = Candidate.find(params[:id])
     if candidate.update(candidate_params)
-      render json: candidate, status: 200
+      render json: candidate, methods: :full_name, status: 200
     else
       render json: {errors: candidate.errors}, status: 422
     end
