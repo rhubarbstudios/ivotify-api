@@ -40,7 +40,7 @@ RSpec.describe "Issues API", type: :request do
     expect(response).to have_http_status(422)
   end
 
-  it "updates a issue record" do
+  it "updates an issue record" do
     issue = create(:issue)
     new_attributes = {
       title: "Gluten-Free Automobiles",
@@ -55,7 +55,19 @@ RSpec.describe "Issues API", type: :request do
     json = JSON.parse(response.body)
     expect(json['title']).to eq "Gluten-Free Automobiles"
     expect(json['summary']).to eq "For sensitive motorists"
+  end
 
+  it "does not update an issue record with invalid attributes" do
+    issue = create(:issue)
+    new_attributes = {
+      title: nil,
+      summary: "Some summary",
+    }
+
+    put "/api/issues/#{issue.id}", issue: new_attributes
+
+    expect(response).not_to be_success
+    expect(response).to have_http_status(422)
   end
 
   it "destroys a issue record" do

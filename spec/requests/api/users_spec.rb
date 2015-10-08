@@ -46,7 +46,19 @@ RSpec.describe "Users API", type: :request do
     json = JSON.parse(response.body)
     expect(json['name']).to eq "Arthur Dent"
     expect(json['email']).to eq "adent@milkyway.com"
+  end
 
+  it "does not update a user record with invalid attributes" do
+    user = create(:user)
+    new_attributes = {
+      name: nil,
+      email: "adent@milkyway.com",
+    }
+
+    put "/api/users/#{user.id}", user: new_attributes
+
+    expect(response).not_to be_success
+    expect(response).to have_http_status(422)
   end
 
   it "destroys a user record" do

@@ -63,6 +63,20 @@ RSpec.describe "Candidates API", type: :request do
 
   end
 
+  it "does not update a candidate with an invalid record" do
+    candidate = create(:candidate)
+    new_attributes = {
+      first_name: nil,
+      last_name: nil,
+      bio: "This is a bad candidate"
+    }
+
+    put "/api/candidates/#{candidate.id}", candidate: new_attributes
+
+    expect(response).not_to be_success
+    expect(response).to have_http_status(422)
+  end
+
   it "destroys a candidate record" do
     candidate = create(:candidate)
 
