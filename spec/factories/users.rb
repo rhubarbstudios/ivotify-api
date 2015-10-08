@@ -9,6 +9,13 @@ FactoryGirl.define do
       admin true
     end
 
+    factory :invalid_user do
+      name nil
+      email nil
+      password nil
+      password_confirmation nil
+    end
+
   end
 
 end
