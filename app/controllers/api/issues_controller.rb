@@ -5,10 +5,6 @@ class Api::IssuesController < ApplicationController
     render json: {issues: issues }
   end
 
-  def new
-    @issue = Issue.new
-  end
-
   def show
     render json: Issue.find(params[:id])
   end
