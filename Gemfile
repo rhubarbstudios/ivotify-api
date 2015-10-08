@@ -9,6 +9,8 @@ gem 'puma'
 gem 'pry-rails'
 gem 'responders', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
+gem 'figaro'
+gem 'coveralls', require: false
 
 group :production, :staging do
   gem 'heroku_rails_deflate'
