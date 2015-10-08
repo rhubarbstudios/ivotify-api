@@ -12,3 +12,5 @@
 !/log/.keep
 /tmp
 
+# Ingore coverage log files for Coveralls
+/coverage/*
