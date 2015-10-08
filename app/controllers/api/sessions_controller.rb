@@ -1,21 +1,12 @@
 class Api::SessionsController < ApplicationController
 
-  def new
-  end
-
   def create
-    user = User.find_by email: params[:email]
-    if user && user.authenticate(params[:password])
-    session[:id] = user.id
-    render json: user, only: [:id, :email]
-
+    user = User.find_by email: params[:session][:email]
+    if user && user.authenticate(params[:session][:password])
+      session[:id] = user.id
+      render json: user, only: [:id, :email]
     else
-
-    render json: {
-      error: 'User is not authenticated',
-      status: 400
-    }, status: 400
-
+      render json: { error: 'User is not authenticated', status: 400 }, status: 400
     end
   end
 
