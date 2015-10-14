@@ -34,7 +34,7 @@ class Api::CandidatesController < ApplicationController
 
   private
     def candidate_params
-      params.require(:candidate).permit(:first_name, :last_name, :quotes, :bio)
+      params.require(:candidate).permit(:first_name, :last_name, { quotes: [:id, :body, :source] }, :bio)
     end
 end
 
