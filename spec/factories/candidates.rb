@@ -6,11 +6,13 @@ FactoryGirl.define do
     quotes [
       {
         id: 1,
+        issue_id: 5,
         body: "This is my first quote",
         source: "CNN"
       },
       {
         id: 2,
+        issue_id: 6,
         body: "This is my second quote",
         source: "Vox News"
       }

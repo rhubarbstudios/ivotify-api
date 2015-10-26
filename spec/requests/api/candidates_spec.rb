@@ -50,7 +50,7 @@ RSpec.describe "Candidates API", type: :request do
       first_name: "Zaphod",
       last_name: "Beeblebrox",
       bio: "Anyone who is capable of getting themselves made President should on no account be allowed to do the job.",
-      quotes: [{issue_id: 1, body: "This is a new quote", source: "New York Times"}]
+      quotes: [{id: 5, issue_id: 1, body: "This is a new quote", source: "New York Times", fake: "tasd"}]
     }
 
     put "/api/candidates/#{candidate.id}", candidate: new_attributes
