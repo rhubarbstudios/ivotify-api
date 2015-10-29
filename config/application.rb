@@ -24,7 +24,7 @@ module IvotifyApi
         origins '*'
         resource '*',
                  headers: :any,
-                 methods: [:post, :put, :options]
+                 methods: [:post, :put, :options, :delete]
       end
     end
     config.active_record.raise_in_transactional_callbacks = true
