@@ -117,73 +117,73 @@ bernie = Candidate.create!(
     body: "'I think guns and gun control is an issue that needs to be discussed', Sanders told NPR's David Greene in an interview airing on Thursday's Morning Edition. 'Let me add to that, I think that urban America has got to respect what rural America is about, where 99 percent of the people in my state who hunt are law abiding people.",
     source: "Interview with NPR, NPR.org, June 24, 2015.",
     issue_id: gun_control.id,
-    candidate_id: = bernie.id
+    candidate_id: bernie.id
   )
   Quote.create!(
     body: "I have a lifetime voting record from the NRA of D minus, D-. I voted very strongly for instant background checks, I want to see them made stronger - probably the most important thing that we can do. I voted, in a state, by the way, which has almost no gun control, not an easy vote, I voted against the NRA and I voted to ban certain types of semiautomatic weapons. I voted to eliminate this gun show loophole which allows people to purchase guns without a background check ",
     source: " Interview with CNN, CNN.com, Aug. 30, 2015 ",
     issue_id: gun_control.id,
-    candidate_id: = bernie.id
+    candidate_id: bernie.id
   )
   Quote.create!(
     body: "I voted against the Patriot Act every time, and it still needs major reform.",
     source: "Town hall meeting at the IBEW, covered by Time.com, May 7, 2015.",
     issue_id: fourth_amendment.id,
-    candidate_id: = bernie.id
+    candidate_id: bernie.id
   )
   Quote.create!(
     body: "Do we really want to live in a country where the NSA gathers data on virtually every single phone call in the United States- including as many as 5 billion cellphone records per day? I don’t.",
     source: "Town hall meeting at the IBEW, covered by Time.com, May 7, 2015.",
     issue_id: fourth_amendment.id,
-    candidate_id: = bernie.id
+    candidate_id: bernie.id
   )
   Quote.create!(
     body: "Freedom of speech does not mean the freedom to buy the United States government.",
     source: "Bernie Sanders 2016 Campaign website, Aug. 18, 2015.",
     issue_id: campaign_finance.id,
-    candidate_id: = bernie.id
+    candidate_id: bernie.id
   )
   Quote.create!(
     body: "To restore our one person-one vote democracy, Congress must pass a constitutional amendment to overturn Citizens United and move toward public funding of elections.",
     source: "Bernie Sanders 2016 Campaign website, Aug. 18, 2015.",
     issue_id: campaign_finance.id,
-    candidate_id: = bernie.id
+    candidate_id: bernie.id
   )
   Quote.create!(
     body: "Voted YES on continuing federal funds for declared 'sanctuary cities'.",
     source: "Bill Table S.Amdt.4309 to S.Con.Res  vote number 08-S069, March 13, 2008.",
     issue_id: immigration.id,
-    candidate_id: = bernie.id
+    candidate_id: bernie.id
   )
   Quote.create!(
     body: "There’s such thing as illegal employers as well. People do not come over the border and get jobs without the full expectation their employers understand exactly what’s going on, pay them under the table and in fact exploit them.",
     source: "NBCNews.com, July 28, 2015.",
     issue_id: immigration.id,
-    candidate_id: = bernie.id
+    candidate_id: bernie.id
   )
   Quote.create!(
     body: "We have to negotiate with Iran. And the alternative of not reaching an agreement, you know what it is? It's war.",
     source: "CBS's 'Face the Nation'",
     issue_id: iran_deal.id,
-    candidate_id: = bernie.id
+    candidate_id: bernie.id
   )
   Quote.create!(
     body: "[The Iran Deal] is a victory for diplomacy over saber-rattling and could keep the United States from being drawn into another never-ending war in the Middle East.",
     source: "WashingtonTimes.com, July 14, 2015.",
     issue_id: iran_deal.id,
-    candidate_id: = bernie.id
+    candidate_id: bernie.id
   )
   Quote.create!(
     body: "My position is that a woman's decision whether to have an abortion is a private one, and that this principle must hold true for all women, regardless of income.",
     source: "Outsider in the House, by Bernie Sanders, p.159, June 17, 1997.",
     issue_id: abortion.id,
-    candidate_id: = bernie.id
+    candidate_id: bernie.id
   )
   Quote.create!(
     body: "Bernie believes in protecting a woman's right to choose and has a lifetime pro-choice record",
     source: "2016 presidential campaign website FeelTheBern.org, 'Issues' , Sep 5, 2015",
     issue_id: abortion.id,
-    candidate_id: = bernie.id
+    candidate_id: bernie.id
   )
 
 donald = Candidate.create!(
@@ -196,7 +196,7 @@ donald = Candidate.create!(
   Quote.create!(
     body: "The problem is once you get into [stronger background checks] you start getting into a situation, the slippery slope, where all of a sudden you are going to really violate the Second Amendment. I don't want to do anything to violate the Second Amendment. To me the Second Amendment is very important. ",
     source: "MSNBC interview Jul 8, 2015 ",
-    issue_id: gun_control.id,,
+    issue_id: gun_control.id,
     candidate_id: donald.id
   )
   Quote.create!(

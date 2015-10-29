@@ -4,4 +4,5 @@ class Quote < ActiveRecord::Base
 
   validates :body, presence: true, uniqueness: true
   validates :source, presence: true
+
 end
