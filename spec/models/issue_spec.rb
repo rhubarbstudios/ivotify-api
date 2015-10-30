@@ -17,4 +17,11 @@ RSpec.describe Issue, type: :model do
     expect(issue).to be_invalid
   end
 
+  it "cannot have a duplicate issue title" do
+    issue = create(:issue)
+    issue2 = build(:issue)
+    issue2.title = issue.title
+    expect(issue2).to be_invalid
+  end
+
 end

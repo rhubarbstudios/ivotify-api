@@ -1,4 +1,6 @@
 class Issue < ActiveRecord::Base
-  validates :title, presence: true
+  has_many :quotes
+
+  validates :title, presence: true, uniqueness: true
   validates :summary, presence: true
 end
