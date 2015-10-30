@@ -34,7 +34,11 @@ class Api::CandidatesController < ApplicationController
 
   private
     def candidate_params
-      params.require(:candidate).permit(:first_name, :last_name, :bio, quotes_attributes: [:issue_id, :body, :source])
+      candidate_params = params.require(:candidate).permit(:first_name, :last_name, :bio, { quotes: [:id, :issue_id, :body, :source] })
+      if candidate_params[:quotes]
+        candidate_params[:quotes_attributes] = candidate_params.delete :quotes
+      end
+      candidate_params
     end
 end
 
