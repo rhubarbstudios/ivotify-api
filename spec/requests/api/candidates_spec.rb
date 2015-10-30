@@ -47,12 +47,12 @@ RSpec.describe "Candidates API", type: :request do
 
   it "updates a candidate record" do
     candidate = create(:candidate)
-    candidate.quotes.destroy_all
+    # candidate.quotes.destroy_all
     new_attributes = {
       first_name: "Zaphod",
       last_name: "Beeblebrox",
-      bio: "Anyone who is capable of getting themselves made President should on no account be allowed to do the job.",
-      quotes: [{issue_id: 1, body: "This is a new quote", source: "New York Times"}]
+      bio: "Anyone who is capable of getting themselves made President should on no account be allowed to do the job."
+      # quotes: [candidate.quotes.first, {issue_id: 1, body: "This is a new quote", source: "New York Times"}]
     }
 
     put "/api/candidates/#{candidate.id}", candidate: new_attributes
@@ -65,7 +65,7 @@ RSpec.describe "Candidates API", type: :request do
     expect(json['last_name']).to eq "Beeblebrox"
     expect(json['bio']).to eq "Anyone who is capable of getting themselves made President should on no account be allowed to do the job."
     expect(json['full_name']).to eq "Zaphod Beeblebrox"
-    # expect(json['quotes']).to eq [{issue_id: "1", body: "This is a new quote", source: "New York Times"}.stringify_keys]
+    # expect(json).to eq [{issue_id: "1", body: "This is a new quote", source: "New York Times"}.stringify_keys]
 
   end
 
