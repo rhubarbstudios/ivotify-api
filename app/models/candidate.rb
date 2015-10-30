@@ -1,5 +1,5 @@
 class Candidate < ActiveRecord::Base
-  has_many :quotes
+  has_many :quotes, dependent: :destroy
   accepts_nested_attributes_for :quotes
 
   validates :first_name,  presence: true

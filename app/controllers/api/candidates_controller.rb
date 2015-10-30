@@ -1,11 +1,11 @@
 class Api::CandidatesController < ApplicationController
 
   def index
-    render json: {candidates: Candidate.all}, methods: :full_name, include: :quotes
+    render json: {candidates: Candidate.all}, methods: :full_name, include: { quotes: { except: :candidate_id } }
   end
 
   def show
-    render json: Candidate.find(params[:id]), methods: :full_name
+    render json: Candidate.find(params[:id]), methods: :full_name, include: { quotes: { except: :candidate_id } }
   end
 
   def create

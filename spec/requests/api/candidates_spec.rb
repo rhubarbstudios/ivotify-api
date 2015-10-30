@@ -23,9 +23,10 @@ RSpec.describe "Candidates API", type: :request do
     expect(json['first_name']).to eq candidate.first_name
     expect(json['last_name']).to eq candidate.last_name
     expect(json['bio']).to eq candidate.bio
-    expect(json['quotes']).to eq candidate.quotes
     expect(json['full_name']).to eq candidate.full_name
-
+    expect(json['quotes'][0]['body']).to eq candidate.quotes.first.body
+    expect(json['quotes'][0]['source']).to eq candidate.quotes.first.source
+    expect(json['quotes'][0]['issue_id']).to eq candidate.quotes.first.issue_id
   end
 
   it "creates a new candidate with valid attributes" do
@@ -46,6 +47,7 @@ RSpec.describe "Candidates API", type: :request do
 
   it "updates a candidate record" do
     candidate = create(:candidate)
+    candidate.quotes.destroy_all
     new_attributes = {
       first_name: "Zaphod",
       last_name: "Beeblebrox",
