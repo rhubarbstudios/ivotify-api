@@ -1,17 +1,17 @@
 class Api::CandidatesController < ApplicationController
 
   def index
-    render json: {candidates: Candidate.all}, methods: :full_name
+    render json: {candidates: Candidate.all}, methods: :full_name, include: { quotes: { except: :candidate_id } }
   end
 
   def show
-    render json: Candidate.find(params[:id]), methods: :full_name
+    render json: Candidate.find(params[:id]), methods: :full_name, include: { quotes: { except: :candidate_id } }
   end
 
   def create
     candidate = Candidate.new(candidate_params)
     if candidate.save
-      render json: candidate, status: 201
+      render json: candidate, methods: :full_name, include: :quotes, status: 201
     else
       render json: {errors: candidate.errors}, status: 422
     end
@@ -20,7 +20,7 @@ class Api::CandidatesController < ApplicationController
   def update
     candidate = Candidate.find(params[:id])
     if candidate.update(candidate_params)
-      render json: candidate, methods: :full_name, status: 200
+      render json: candidate, methods: :full_name, include: :quotes, status: 200
     else
       render json: {errors: candidate.errors}, status: 422
     end
@@ -34,7 +34,11 @@ class Api::CandidatesController < ApplicationController
 
   private
     def candidate_params
-      params.require(:candidate).permit(:first_name, :last_name, :bio, quotes: [:issue_id, :body, :source])
+      candidate_params = params.require(:candidate).permit(:first_name, :last_name, :bio, { quotes: [:id, :issue_id, :body, :source] })
+      if candidate_params[:quotes]
+        candidate_params[:quotes_attributes] = candidate_params.delete :quotes
+      end
+      candidate_params
     end
 end
 
