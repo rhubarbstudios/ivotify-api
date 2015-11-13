@@ -1,17 +1,17 @@
 class Api::IssuesController < ApplicationController
 
   def index
-    render json: {issues: Issue.all }, include: { issue_bullets: { except: :side_id } }
+    render json: {issues: Issue.all }, include: { issue_bullets: { except: :issue_id } }
   end
 
   def show
-    render json: Issue.find(params[:id])
+    render json: Issue.find(params[:id]), include: { issue_bullets: { except: :issue_id } }
   end
 
   def create
     issue = Issue.new(issue_params)
     if issue.save
-      render json: issue, status: 201
+      render json: issue, include: :issue_bullets, status: 201
     else
       render json: {errors: issue.errors}, status: 422
     end
@@ -20,7 +20,7 @@ class Api::IssuesController < ApplicationController
   def update
     issue = Issue.find(params[:id])
     if issue.update(issue_params)
-      render json: issue, status: 200
+      render json: issue, include: :issue_bullets, status: 200
     else
       render json: {errors: issue.errors}, status: 422
     end
@@ -34,6 +34,10 @@ class Api::IssuesController < ApplicationController
 
   private
     def issue_params
-      params.require(:issue).permit(:title, :summary)
+      issue_params = params.require(:issue).permit(:title, :summary, :background, :side_one, :side_two, { issue_bullets: [:id, :issue_id, :body, :side_id] })
+      if issue_params[:issue_bullets]
+        issue_params[:issue_bullets_attributes] = issue_params.delete :issue_bullets
+      end
+      issue_params
     end
 end
