@@ -1,7 +1,13 @@
 FactoryGirl.define do
   factory :issue_bullet do
-    body "MyString"
-side_id 1
+    body { Faker::Lorem.paragraph }
+    side_id { Faker::Company.name }
+    association :issue
+  end
+
+  factory :invalid_quote do
+    body nil
+    side_id nil
   end
 
 end
