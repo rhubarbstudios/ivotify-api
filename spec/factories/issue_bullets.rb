@@ -5,7 +5,7 @@ FactoryGirl.define do
     association :issue
   end
 
-  factory :invalid_quote do
+  factory :invalid_issue_bullet do
     body nil
     side_id nil
   end
