@@ -5,4 +5,7 @@ class Issue < ActiveRecord::Base
 
   validates :title, presence: true, uniqueness: true
   validates :summary, presence: true
+  validates :background, presence: true
+  validates :side_one, presence: true
+  validates :side_two, presence: true
 end
