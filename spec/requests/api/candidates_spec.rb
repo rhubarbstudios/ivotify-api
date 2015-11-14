@@ -94,4 +94,3 @@ RSpec.describe "Candidates API", type: :request do
   end
 
 end
-
