@@ -1,7 +1,7 @@
 class Api::IssuesController < ApplicationController
 
   def index
-    render json: {issues: Issue.all }, include: { issue_sides: { except: :issue_id }, include: { issue_bullets: { except: :issue_id}}}
+    render json: { issues: Issue.all }, include: { issue_sides: { except: :issue_id, include: { issue_bullets: { except: :issue_bullet_id } } }
   end
 
   def show
