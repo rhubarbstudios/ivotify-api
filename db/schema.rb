@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113231235) do
+ActiveRecord::Schema.define(version: 20151116201458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,20 +32,27 @@ ActiveRecord::Schema.define(version: 20151113231235) do
 
   create_table "issue_bullets", force: :cascade do |t|
     t.string   "body"
-    t.integer  "side_id"
+    t.integer  "issue_side_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "issue_bullets", ["issue_side_id"], name: "index_issue_bullets_on_issue_side_id", using: :btree
+
+  create_table "issue_sides", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "issue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "issue_id"
   end
+
+  add_index "issue_sides", ["issue_id"], name: "index_issue_sides_on_issue_id", using: :btree
 
   create_table "issues", force: :cascade do |t|
     t.string   "title"
     t.string   "summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "background"
-    t.string   "side_one"
-    t.string   "side_two"
   end
 
   create_table "quotes", force: :cascade do |t|
