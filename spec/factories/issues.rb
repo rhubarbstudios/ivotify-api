@@ -10,6 +10,7 @@ FactoryGirl.define do
       background nil
     end
 
+
     # user_with_posts will create post data after the user has been created
     factory :issue_with_sides do
       # posts_count is declared as a transient attribute and available in

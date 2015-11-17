@@ -9,6 +9,7 @@ FactoryGirl.define do
       end
 
 
+
   # user_with_posts will create post data after the user has been created
   factory :issue_with_bullets do
     # posts_count is declared as a transient attribute and available in
@@ -21,8 +22,8 @@ FactoryGirl.define do
     # evaluator, which stores all values from the factory, including transient
     # attributes; `create_list`'s second argument is the number of records
     # to create and we make sure the user is associated properly to the post
-    after(:create) do |issue, evaluator|
-      create_list(:issue_bullet, evaluator.bullet_count, issue: issue)
+    after(:create) do |issue_side, evaluator|
+      create_list(:issue_bullet, evaluator.bullet_count, issue_side: issue_side)
     end
   end
 
