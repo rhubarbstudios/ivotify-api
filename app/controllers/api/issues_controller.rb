@@ -34,6 +34,6 @@ class Api::IssuesController < ApplicationController
 
   private
     def issue_params
-      issue_params = params.require(:issue).permit(:title, :summary, :background, { issue_sides: [:id, :title, { issue_bullets: [:id, :body] } ] } )
+      issue_params = params.require(:issue).permit(:title, :summary, :background, { issue_sides_attributes: [:id, :title, { issue_bullets_attributes: [:id, :body] } ] } )
     end
 end

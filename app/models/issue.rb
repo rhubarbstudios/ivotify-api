@@ -5,7 +5,7 @@ class Issue < ActiveRecord::Base
   accepts_nested_attributes_for :issue_sides
 
   has_many :issue_bullets, through: :issue_sides, dependent: :destroy
-  accepts_nested_attributes_for :issue_bullets
+  
 
   validates :title, presence: true, uniqueness: true
   validates :summary, presence: true
