@@ -2,10 +2,12 @@ FactoryGirl.define do
   factory :issue do
     title { Faker::Company.catch_phrase }
     summary { Faker::Lorem.paragraph }
+    background { Faker::Lorem.paragraph }
 
     factory :invalid_issue do
       title nil
       summary nil
+      background nil
     end
 
     # user_with_posts will create post data after the user has been created
