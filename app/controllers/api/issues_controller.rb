@@ -10,7 +10,7 @@ class Api::IssuesController < ApplicationController
   def create
     issue = Issue.new(issue_params)
     if issue.save
-      render json: issue, include: :issue_sides, include: :issue_bullets status: 201
+      render json: issue, include: :issue_sides, :issue_bullets status: 201
     else
       render json: {errors: issue.errors}, status: 422
     end
@@ -19,7 +19,7 @@ class Api::IssuesController < ApplicationController
   def update
     issue = Issue.find(params[:id])
     if issue.update(issue_params)
-      render json: issue, include: :issue_sides, include: :issue_bullets status: 200
+      render json: issue, include: :issue_sides, :issue_bullets status: 200
     else
       render json: {errors: issue.errors}, status: 422
     end
