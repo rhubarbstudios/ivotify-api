@@ -4,6 +4,6 @@ class IssueSide < ActiveRecord::Base
 
   accepts_nested_attributes_for :issue_bullets
 
-  validates :title, presence: true
+  # validates :title, presence: true
 
 end
