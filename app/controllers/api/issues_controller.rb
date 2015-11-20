@@ -9,11 +9,7 @@ class Api::IssuesController < ApplicationController
   end
 
   def create
-    params = issue_params
-    issue_sides = params.delete(:issue_sides)
-
-    issue = Issue.new(params)
-    issue_sides.each {|a| issue.issue_sides << IssueSide.create(title: a[:title])}
+    issue = Issue.new(issue_params)
 
     if issue.save
       render json: issue, include: :issue_sides, status: 201

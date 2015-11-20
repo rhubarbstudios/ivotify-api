@@ -27,7 +27,7 @@ RSpec.describe "Issues API", type: :request do
   end
 
   it "creates a new issue with valid attributes" do
-    issue_attributes = attributes_for :issue
+    issue_attributes = attributes_for(:issue)
 
     expect {post "/api/issues", issue: issue_attributes }.to change(Issue, :count).by(1)
     expect(response).to be_success
