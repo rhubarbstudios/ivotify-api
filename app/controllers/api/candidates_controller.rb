@@ -40,5 +40,5 @@ class Api::CandidatesController < ApplicationController
       end
       candidate_params
     end
-    
+
 end

@@ -23,7 +23,8 @@ RSpec.describe "Issues API", type: :request do
     expect(json['title']).to eq issue.title
     expect(json['summary']).to eq issue.summary
     expect(json['background']).to eq issue.background
-    # expect(json['issue_sides'][0]['title']).to eq issue.issue_sides.first.title
+    expect(json['issue_sides'][0]['title']).to eq issue.issue_sides.first.title
+    expect(json['issue_sides'][0]['issue_id']).to eq issue.issue_sides.first.issue_id
   end
 
   it "creates a new issue with valid attributes" do
@@ -33,6 +34,32 @@ RSpec.describe "Issues API", type: :request do
     expect(response).to be_success
     expect(response).to have_http_status(201)
   end
+
+  # it "creates an issue with an issue_side" do
+  #   issue_with_side_attributes =
+  #   {
+  #     "issue"=>
+  #     {
+  #     "title"=>"Test 15",
+  #     "summary"=>"<p>Test 15</p>",
+  #     "background"=>"<p>Test 15</p>",
+  #     "issue_sides"=>
+  #       [
+  #         {
+  #           "title"=>"Test 15"
+  #         }
+  #       ],
+  #     }
+  #   }
+  #
+  #   post "/api/issues", issue: issue_with_side_attributes
+  #   pry
+  #   issue = Issue.first
+  #   issue_side = issue.sides.first
+  #
+  #   expect(issue.sides.count).to eq 1
+  #   expect(issue_side.title).to eq "Test 15"
+  # end
 
   it "does not create a new issue with invalid attributes" do
     issue_attributes = attributes_for :invalid_issue

@@ -12,4 +12,11 @@ RSpec.describe IssueSide, type: :model do
     expect(issue_side).to be_invalid
   end
 
+  # it "cannot have the same title content as another issue_side" do
+  #   issue_side = create(:issue_side)
+  #   issue_side2 = build(:issue_side)
+  #   issue_side2.title = issue_side.title
+  #   expect(issue_side2).to be_invalid
+  # end
+
 end

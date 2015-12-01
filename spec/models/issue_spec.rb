@@ -24,14 +24,4 @@ RSpec.describe Issue, type: :model do
     expect(issue2).to be_invalid
   end
 
-  it "issues_with_sides factory is valid" do
-    issue = create(:issue_with_sides)
-    expect(issue).to be_valid
-
-    expect(issue.issue_sides.count).to eq(2)
-
-    issue.issue_sides.first.issue_bullets << create(:issue_bullet)
-
-  end
-
 end
