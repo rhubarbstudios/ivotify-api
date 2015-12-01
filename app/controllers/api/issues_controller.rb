@@ -6,7 +6,7 @@ class Api::IssuesController < ApplicationController
 # , include: { issue_bullets: { except: :issue_bullet_id } }
   def show
     render json: Issue.find(params[:id]), include: { issue_sides: { except: :issue_id} }
-    # , include: { issue_bullets: { except: :issue_bullet_id } } 
+    # , include: { issue_bullets: { except: :issue_bullet_id } }
   end
 
   def create
