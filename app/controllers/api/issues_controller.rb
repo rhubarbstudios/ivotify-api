@@ -3,10 +3,9 @@ class Api::IssuesController < ApplicationController
   def index
     render json: { issues: Issue.all }, include: { issue_sides: { except: :issue_id} }
   end
-# , include: { issue_bullets: { except: :issue_bullet_id } }
+
   def show
     render json: Issue.find(params[:id]), include: { issue_sides: { except: :issue_id} }
-    # , include: { issue_bullets: { except: :issue_bullet_id } }
   end
 
   def create
@@ -36,13 +35,11 @@ class Api::IssuesController < ApplicationController
 
   private
     def issue_params
-      issue_params = params.require(:issue).permit(:title, :summary, :background, { issue_sides: [:id, :title, :issue_id ] })
+      issue_params = params.require(:issue).permit(:title, :summary, :background, { issue_sides: [:id, :title, :issue_id, :bullets] })
       if issue_params[:issue_sides]
         issue_params[:issue_sides_attributes] = issue_params.delete :issue_sides
       end
       issue_params
     end
-
-    # , { issue_bullets: [:id, :body, :issue_side_id, :issue_id ] }
 
 end
