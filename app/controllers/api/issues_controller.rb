@@ -35,7 +35,7 @@ class Api::IssuesController < ApplicationController
 
   private
     def issue_params
-      issue_params = params.require(:issue).permit(:title, :summary, :background, { issue_sides: [:id, :title, :issue_id, :bullets] })
+      issue_params = params.require(:issue).permit(:title, :summary, :background, { issue_sides: [:id, :title, :issue_id, { bullets: [] } ] })
       if issue_params[:issue_sides]
         issue_params[:issue_sides_attributes] = issue_params.delete :issue_sides
       end
