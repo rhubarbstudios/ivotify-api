@@ -11,32 +11,54 @@ RSpec.describe "Issues API", type: :request do
     expect(response).to have_http_status(200)
   end
 
-  # it "sends an individual issue" do
-  #   issue = create(:issue)
-  #
-  #   get "/api/issues/#{issue.id}"
-  #
-  #   expect(response).to be_success
-  #   expect(response).to have_http_status(200)
-  #
-  #   json = JSON.parse(response.body)
-  #   expect(json['title']).to eq issue.title
-  #   expect(json['summary']).to eq issue.summary
-  #   expect(json['background']).to eq issue.background
-  #   expect(json['side_one']).to eq issue.side_one
-  #   expect(json['side_two']).to eq issue.side_two
-  #   expect(json['issue_bullets'][0]['body']).to eq issue.issue_bullets.first.body
-  #   expect(json['issue_bullets'][0]['side_id']).to eq issue.issue_bullets.first.side_id
-  #   expect(json['issue_bullets'][0]['issue_id']).to eq issue.issue_bullets.first.issue_id
-  # end
+  it "sends an individual issue" do
+    issue = create(:issue)
+
+    get "/api/issues/#{issue.id}"
+
+    expect(response).to be_success
+    expect(response).to have_http_status(200)
+
+    json = JSON.parse(response.body)
+    expect(json['title']).to eq issue.title
+    expect(json['summary']).to eq issue.summary
+    expect(json['background']).to eq issue.background
+    expect(json['issue_sides'][0]['title']).to eq issue.issue_sides.first.title
+  end
 
   it "creates a new issue with valid attributes" do
-    issue_attributes = attributes_for :issue
+    issue_attributes = attributes_for(:issue)
 
     expect {post "/api/issues", issue: issue_attributes }.to change(Issue, :count).by(1)
     expect(response).to be_success
     expect(response).to have_http_status(201)
   end
+
+  # it "creates an issue with an issue_side" do
+  #   issue_with_side_attributes =
+  #   {
+  #     "issue"=>
+  #     {
+  #     "title"=>"Test 15",
+  #     "summary"=>"<p>Test 15</p>",
+  #     "background"=>"<p>Test 15</p>",
+  #     "issue_sides"=>
+  #       [
+  #         {
+  #           "title"=>"Test 15"
+  #         }
+  #       ],
+  #     }
+  #   }
+  #
+  #   post "/api/issues", issue: issue_with_side_attributes
+  #   pry
+  #   issue = Issue.first
+  #   issue_side = issue.sides.first
+  #
+  #   expect(issue.sides.count).to eq 1
+  #   expect(issue_side.title).to eq "Test 15"
+  # end
 
   it "does not create a new issue with invalid attributes" do
     issue_attributes = attributes_for :invalid_issue
@@ -77,9 +99,7 @@ RSpec.describe "Issues API", type: :request do
     new_attributes = {
       title: nil,
       summary: nil,
-      background: "Lets go to mars",
-      side_one: "Like now",
-      side_two: "Forever and ever"
+      background: "Lets go to mars"
     }
 
     put "/api/issues/#{issue.id}", issue: new_attributes
